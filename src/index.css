@@ -40,6 +40,9 @@
     --chart-electricity: 38 92% 55%;
     --chart-water: 200 80% 55%;
     --chart-internet: 280 65% 60%;
+    --chart-gas: 15 85% 55%;
+    --chart-dth: 340 70% 55%;
+    --chart-phone: 170 65% 45%;
     --status-paid: 142 60% 45%;
     --status-unpaid: 45 93% 55%;
     --status-overdue: 0 72% 55%;
@@ -87,6 +90,11 @@
   .stagger-in > *:nth-child(3) { animation-delay: 160ms; }
   .stagger-in > *:nth-child(4) { animation-delay: 240ms; }
   .stagger-in > *:nth-child(5) { animation-delay: 320ms; }
+  .stagger-in > *:nth-child(6) { animation-delay: 400ms; }
+
+  .progress-bar {
+    @apply h-2 rounded-full transition-all duration-500 ease-out;
+  }
 }
 
 @keyframes fadeUp {
@@ -110,4 +118,9 @@
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
