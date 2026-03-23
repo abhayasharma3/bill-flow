@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Zap, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -28,10 +29,11 @@ const Signup = () => {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md fade-up">
         <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="p-2.5 rounded-xl bg-primary/10 glow-sm">
-            <Zap className="h-7 w-7 text-primary" />
+          <img src={logo} alt="Bill Manager" className="h-12 w-12 rounded-xl object-contain" />
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">Bill Manager</h1>
+            <p className="text-xs text-muted-foreground">Home Utility Tracker</p>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Bill Manager</h1>
         </div>
 
         <div className="bg-card border border-border rounded-xl p-8 shadow-xl shadow-black/20">
