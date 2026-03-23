@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import UploadBill from "./pages/UploadBill";
 import BillsList from "./pages/BillsList";
 import Trends from "./pages/Trends";
+import PaymentHistory from "./pages/PaymentHistory";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,7 +38,9 @@ const AppRoutes = () => (
       <Route index element={<Dashboard />} />
       <Route path="upload" element={<UploadBill />} />
       <Route path="bills" element={<BillsList />} />
+      <Route path="payments" element={<PaymentHistory />} />
       <Route path="trends" element={<Trends />} />
+      <Route path="settings" element={<Settings />} />
     </Route>
     <Route path="*" element={<NotFound />} />
   </Routes>

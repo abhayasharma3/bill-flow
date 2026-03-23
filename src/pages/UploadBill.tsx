@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Upload, FileText } from "lucide-react";
 import { toast } from "sonner";
+import { categoryLabels, categoryEmojis, type BillCategory } from "@/data/bills";
 
 const UploadBill = () => {
   const [dragOver, setDragOver] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("electricity");
+  const [category, setCategory] = useState<BillCategory>("electricity");
   const [billDate, setBillDate] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [desc, setDesc] = useState("");
+  const [provider, setProvider] = useState("");
+  const [accountNo, setAccountNo] = useState("");
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
@@ -26,6 +29,8 @@ const UploadBill = () => {
     setFile(null);
     setAmount("");
     setDesc("");
+    setProvider("");
+    setAccountNo("");
   };
 
   return (
@@ -68,11 +73,19 @@ const UploadBill = () => {
           </div>
           <div>
             <label className="text-sm font-medium mb-1.5 block">Category</label>
-            <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full h-10 rounded-md bg-secondary border border-border px-3 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-ring transition-colors">
-              <option value="electricity">⚡ Electricity</option>
-              <option value="water">💧 Water</option>
-              <option value="internet">🌐 Internet</option>
+            <select value={category} onChange={(e) => setCategory(e.target.value as BillCategory)} className="w-full h-10 rounded-md bg-secondary border border-border px-3 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-ring transition-colors">
+              {(Object.keys(categoryLabels) as BillCategory[]).map(cat => (
+                <option key={cat} value={cat}>{categoryEmojis[cat]} {categoryLabels[cat]}</option>
+              ))}
             </select>
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1.5 block">Provider</label>
+            <Input value={provider} onChange={(e) => setProvider(e.target.value)} placeholder="Tata Power" className="bg-secondary border-border focus:border-primary" />
+          </div>
+          <div>
+            <label className="text-sm font-medium mb-1.5 block">Account Number</label>
+            <Input value={accountNo} onChange={(e) => setAccountNo(e.target.value)} placeholder="TP-9283746" className="bg-secondary border-border focus:border-primary" />
           </div>
           <div>
             <label className="text-sm font-medium mb-1.5 block">Bill Date</label>

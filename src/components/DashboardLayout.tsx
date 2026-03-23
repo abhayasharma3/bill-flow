@@ -1,14 +1,17 @@
 import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { LayoutDashboard, Upload, FileText, TrendingUp, LogOut, Zap, Menu, X } from "lucide-react";
+import { LayoutDashboard, Upload, FileText, TrendingUp, LogOut, Menu, X, Settings, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
   { label: "Upload Bill", path: "/dashboard/upload", icon: Upload },
   { label: "Bills List", path: "/dashboard/bills", icon: FileText },
-  { label: "Trend Analysis", path: "/dashboard/trends", icon: TrendingUp },
+  { label: "Payments", path: "/dashboard/payments", icon: CreditCard },
+  { label: "Trends", path: "/dashboard/trends", icon: TrendingUp },
+  { label: "Settings", path: "/dashboard/settings", icon: Settings },
 ];
 
 const DashboardLayout = () => {
@@ -31,13 +34,11 @@ const DashboardLayout = () => {
 
       {/* Sidebar */}
       <aside className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="p-5 flex items-center gap-3 border-b border-sidebar-border">
-          <div className="p-2 rounded-lg bg-primary/10">
-            <Zap className="h-5 w-5 text-primary" />
-          </div>
+        <div className="p-4 flex items-center gap-3 border-b border-sidebar-border">
+          <img src={logo} alt="Bill Manager" className="h-9 w-9 rounded-lg object-contain" />
           <div>
             <h2 className="font-bold text-sm text-sidebar-accent-foreground">Bill Manager</h2>
-            <p className="text-xs text-sidebar-foreground">Home Utility</p>
+            <p className="text-[10px] text-sidebar-foreground">Home Utility Tracker</p>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="ml-auto lg:hidden text-sidebar-foreground hover:text-sidebar-accent-foreground">
             <X className="h-5 w-5" />
